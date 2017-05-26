@@ -71,38 +71,6 @@ public class CommandFactoryTest {
     assertTrue(comm[3] == (byte) 128);
   }
 
-  @Test
-  public void testDigitalOut() {
-    Command command = CommandFactory.setDigitalOutput(true, true, true);
-    byte[] comm = command.getCommand();
-    assertTrue(comm[0] == (byte) 147);
-    assertTrue(comm[1] == (byte) 0x07);
-
-    command = CommandFactory.setDigitalOutput(true, false, false);
-    comm = command.getCommand();
-    assertTrue(comm[0] == (byte) 147);
-    assertTrue(comm[1] == (byte) 0x04);
-
-    command = CommandFactory.setDigitalOutput(false, true, false);
-    comm = command.getCommand();
-    assertTrue(comm[0] == (byte) 147);
-    assertTrue(comm[1] == (byte) 0x02);
-
-    command = CommandFactory.setDigitalOutput(false, false, true);
-    comm = command.getCommand();
-    assertTrue(comm[0] == (byte) 147);
-    assertTrue(comm[1] == (byte) 0x01);
-
-    command = CommandFactory.setDigitalOutput(false, false, false);
-    comm = command.getCommand();
-    assertTrue(comm[0] == (byte) 147);
-    assertTrue(comm[1] == (byte) 0x00);
-
-    command = CommandFactory.setDigitalOutput(true, true, false);
-    comm = command.getCommand();
-    assertTrue(comm[0] == (byte) 147);
-    assertTrue(comm[1] == (byte) 0x06);
-  }
 
   @Test
   public void testPwmLowSide() {
@@ -142,11 +110,4 @@ public class CommandFactoryTest {
     assertTrue(comm[1] == (byte) 0x03);
   }
 
-  @Test
-  public void testSendIR() {
-    Command command = CommandFactory.sendIR(128);
-    byte[] comm = command.getCommand();
-    assertTrue(comm[0] == (byte) 151);
-    assertTrue(comm[1] == (byte) 0x80);
-  }
 }

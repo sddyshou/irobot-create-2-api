@@ -47,18 +47,18 @@ public class ResponsePocTest {
     Assert.assertTrue(_response.getResponse());
     Assert.assertFalse(_response2.getResponse2());
 
-    SensorData responseInterface = test.getResponse(new byte[] { 0 });
-    SensorData responseInterface2 = test.getResponse(new byte[] { 1 });
+    test.getResponse(new byte[] { 0 });
+    test.getResponse(new byte[] { 1 });
 
     try {
-      Test2Response response2 = test.getResponse(new byte[] { 0 });
+      test.getResponse(new byte[] { 0 });
       Assert.fail("should have produced a class cast exception");
     } catch (ClassCastException e) {
 
     }
 
     try {
-      TestResponse response1 = test.getResponse(new byte[] { 1 });
+      test.getResponse(new byte[] { 1 });
       Assert.fail("should have produced a class cast exception");
     } catch (ClassCastException e) {
 
