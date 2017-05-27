@@ -2,7 +2,7 @@ package com.ilol.irobot.impl;
 
 import com.ilol.irobot.enums.OpCode;
 
-public class LowSideDriver extends AbstractCommand {
+public class LowSideDriver extends SingleCommand {
     public LowSideDriver(Integer dutyCycle0) {
         this(dutyCycle0, 0, 0);
     }

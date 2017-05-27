@@ -3,7 +3,7 @@ package com.ilol.irobot.impl;
 import com.ilol.irobot.enums.Baud;
 import com.ilol.irobot.enums.OpCode;
 
-public class BaudCommand extends AbstractCommand {
+public class BaudCommand extends SingleCommand {
     public BaudCommand(Baud baud) {
         setCommand(new byte[] { (byte) OpCode.BAUD.op(), (byte) baud.getBaudCode() });
     }

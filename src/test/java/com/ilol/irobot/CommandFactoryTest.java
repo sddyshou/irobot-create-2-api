@@ -6,12 +6,13 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 import com.ilol.irobot.enums.Baud;
+import com.ilol.irobot.impl.SingleCommand;
 
 public class CommandFactoryTest {
 
     @Test
     public void testBaudAndDemo() {
-        Command command = CommandFactory.setBaud(Baud._300);
+        SingleCommand command = CommandFactory.setBaud(Baud._300);
         byte[] comm = command.getCommand();
         assertTrue(comm[0] == (byte) 129);
         assertTrue(comm[1] == (byte) 0x00);
@@ -20,7 +21,7 @@ public class CommandFactoryTest {
 
     @Test
     public void testStartSafeFull() {
-        Command command = CommandFactory.start();
+        SingleCommand command = CommandFactory.start();
         byte[] comm = command.getCommand();
         assertTrue(comm[0] == (byte) 128);
 
@@ -35,7 +36,7 @@ public class CommandFactoryTest {
 
     @Test
     public void testDriveAndDriveDirect() {
-        Command command = CommandFactory.drive((short) -200, (short) 500);
+        SingleCommand command = CommandFactory.drive((short) -200, (short) 500);
         byte[] comm = command.getCommand();
         assertTrue(comm[0] == (byte) 137);
         assertTrue(comm[1] == (byte) 0xff);
@@ -57,7 +58,7 @@ public class CommandFactoryTest {
 
     @Test
     public void testLed() {
-        Command command = CommandFactory.setLedDigits(1, 2, 3, 4);
+        SingleCommand command = CommandFactory.setLedDigits(1, 2, 3, 4);
         byte[] comm = command.getCommand();
         assertEquals((byte) 163, comm[0]);
         assertEquals((byte) 1, comm[1]);
@@ -68,7 +69,7 @@ public class CommandFactoryTest {
 
     @Test
     public void testPwmLowSide() {
-        Command command = CommandFactory.setPwmLowSide(128, 128, 128);
+        SingleCommand command = CommandFactory.setPwmLowSide(128, 128, 128);
         byte[] comm = command.getCommand();
         assertTrue(comm[0] == (byte) 144);
         assertTrue(comm[1] == (byte) 0x80);
@@ -78,7 +79,7 @@ public class CommandFactoryTest {
 
     @Test
     public void testLowSide() {
-        Command command = CommandFactory.setLowSide(true, true, true);
+        SingleCommand command = CommandFactory.setLowSide(true, true, true);
         byte[] comm = command.getCommand();
         assertTrue(comm[0] == (byte) 138);
         assertTrue(comm[1] == (byte) 0x07);

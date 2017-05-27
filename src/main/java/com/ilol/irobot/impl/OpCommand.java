@@ -2,7 +2,7 @@ package com.ilol.irobot.impl;
 
 import com.ilol.irobot.enums.OpCode;
 
-public class OpCommand extends AbstractCommand {
+public class OpCommand extends SingleCommand {
     public OpCommand(OpCode op) {
         setCommand(new byte[] { (byte) op.op() });
     }

@@ -2,7 +2,7 @@ package com.ilol.irobot.impl;
 
 import com.ilol.irobot.enums.OpCode;
 
-public class DigitLedCommand extends AbstractCommand {
+public class DigitLedCommand extends SingleCommand {
 
     public DigitLedCommand(Integer i1, Integer i2, Integer i3, Integer i4) {
         int[] command = new int[5];

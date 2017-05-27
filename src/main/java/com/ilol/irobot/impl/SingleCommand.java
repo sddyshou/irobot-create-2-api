@@ -2,14 +2,28 @@ package com.ilol.irobot.impl;
 
 import java.util.Arrays;
 
+import com.google.common.base.Optional;
 import com.ilol.irobot.Command;
+import com.ilol.irobot.CommandExecutor;
 import com.ilol.irobot.SensorData;
 
-public class AbstractCommand implements Command {
+public class SingleCommand implements Command {
 
     private byte[] command;
 
-    public void setCommand(byte[] command) {
+    @Override
+    public Optional<? extends SensorData> execute(CommandExecutor commandExecutor) {
+        while (true) {
+            commandExecutor.send(getCommand());
+            Optional<? extends SensorData> response = getResponse(command);
+            boolean status = handleResponse(response);
+            if (status) {
+                return response;
+            }
+        }
+    }
+
+    protected void setCommand(byte[] command) {
         this.command = command;
     }
 
@@ -25,16 +39,12 @@ public class AbstractCommand implements Command {
         return command;
     }
 
-    public boolean isExpectResponse() {
-        return false;
-    }
-
     public int getLengthResponse() {
         return 0;
     }
 
-    public <K extends SensorData> K getResponse(byte[] response) {
-        return null;
+    public Optional<? extends SensorData> getResponse(byte[] response) {
+        return Optional.absent();
     }
 
     protected static byte[] concatAll(byte[] first, byte[]... rest) {
@@ -50,4 +60,9 @@ public class AbstractCommand implements Command {
         }
         return result;
     }
+
+    public boolean handleResponse(Optional<? extends SensorData> responseData) {
+        return true;
+    }
+
 }

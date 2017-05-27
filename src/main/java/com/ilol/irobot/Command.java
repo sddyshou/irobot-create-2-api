@@ -1,12 +1,7 @@
 package com.ilol.irobot;
 
+import com.google.common.base.Optional;
+
 public interface Command {
-    byte[] getCommand();
-
-    boolean isExpectResponse();
-
-    int getLengthResponse();
-
-    <K extends SensorData> K getResponse(byte[] response);
-
+    Optional<? extends SensorData> execute(CommandExecutor commandExecutor);
 }

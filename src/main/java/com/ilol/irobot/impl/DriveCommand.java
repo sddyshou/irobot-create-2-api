@@ -2,7 +2,7 @@ package com.ilol.irobot.impl;
 
 import com.ilol.irobot.enums.OpCode;
 
-public class DriveCommand extends AbstractCommand {
+public class DriveCommand extends SingleCommand {
 
     public static final Short STRAIGHT = (short) 32767;
     public static final Short CCLW = (short) 2001;
