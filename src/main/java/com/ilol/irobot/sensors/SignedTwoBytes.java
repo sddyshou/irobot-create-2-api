@@ -1,18 +1,18 @@
 package com.ilol.irobot.sensors;
 
 public class SignedTwoBytes extends AbstractSensorData {
-  public short value = 0;
+    public short value = 0;
 
-  public SignedTwoBytes(String packetName, byte[] data) {
-    super(packetName);
-    this.value = (short) (((this.value | data[0]) << 8) | data[1]);
-  }
+    public SignedTwoBytes(String packetName, byte[] data) {
+        super(packetName);
+        this.value = (short) (((this.value | data[0]) << 8) | data[1]);
+    }
 
-  public short getValue() {
-    return value;
-  }
+    public short getValue() {
+        return value;
+    }
 
-  public String toString() {
-    return String.format("[%s] = %d", getPacketName(), getValue());
-  }
+    public String toString() {
+        return String.format("[%s] = %d", getPacketName(), getValue());
+    }
 }

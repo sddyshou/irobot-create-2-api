@@ -1,11 +1,11 @@
 package com.ilol.irobot.sensors;
 
 public class Distance extends SignedTwoBytes {
-  public Distance(String packetName, byte[] data) {
-    super(packetName, data);
-  }
+    public Distance(String packetName, byte[] data) {
+        super(packetName, data);
+    }
 
-  public short getDistance() {
-    return getValue();
-  }
+    public short getDistance() {
+        return getValue();
+    }
 }

@@ -2,11 +2,11 @@ package com.ilol.irobot.sensors;
 
 public class WallSignal extends UnsignedTwoBytes {
 
-  public WallSignal(String packetName, byte[] data) {
-    super(packetName, data);
-  }
+    public WallSignal(String packetName, byte[] data) {
+        super(packetName, data);
+    }
 
-  public int getWallSignal() {
-    return getValue();
-  }
+    public int getWallSignal() {
+        return getValue();
+    }
 }

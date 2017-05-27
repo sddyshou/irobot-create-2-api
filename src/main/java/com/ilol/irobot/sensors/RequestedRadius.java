@@ -2,11 +2,11 @@ package com.ilol.irobot.sensors;
 
 public class RequestedRadius extends SignedTwoBytes {
 
-  public RequestedRadius(String packetName, byte[] data) {
-    super(packetName, data);
-  }
+    public RequestedRadius(String packetName, byte[] data) {
+        super(packetName, data);
+    }
 
-  public short getRequestedRadius() {
-    return getValue();
-  }
+    public short getRequestedRadius() {
+        return getValue();
+    }
 }

@@ -2,18 +2,18 @@ package com.ilol.irobot.sensors;
 
 public class BatteryTemperature extends AbstractSensorData {
 
-  private byte temp;
+    private byte temp;
 
-  public BatteryTemperature(String packetName, byte[] response) {
-    super(packetName);
-    temp = response[0];
-  }
+    public BatteryTemperature(String packetName, byte[] response) {
+        super(packetName);
+        temp = response[0];
+    }
 
-  public byte getTemperature() {
-    return temp;
-  }
+    public byte getTemperature() {
+        return temp;
+    }
 
-  public String toString() {
-    return String.format("[%s] = %d", getPacketName(), temp);
-  }
+    public String toString() {
+        return String.format("[%s] = %d", getPacketName(), temp);
+    }
 }

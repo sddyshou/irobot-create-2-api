@@ -6,6 +6,7 @@ public class MoveToCommand extends AbstractCompositeCommand {
             throw new IllegalArgumentException("Illegal distance and velocity values. Will cause infinite loop.");
         }
         // TODO:
-//        setCommand(DriveCommand.straight(velocity), new WaitCommand(OpCode.WAIT_DISTANCE, distance), DriveCommand.stop());
+        // setCommand(DriveCommand.straight(velocity), new
+        // WaitCommand(OpCode.WAIT_DISTANCE, distance), DriveCommand.stop());
     }
 }

@@ -1,11 +1,11 @@
 package com.ilol.irobot;
 
 public interface Connection {
-  void open();
+    void open();
 
-  void send(byte[] bytes);
+    void send(byte[] bytes);
 
-  byte[] recv(int length);
+    byte[] recv(int length);
 
-  void close();
+    void close();
 }

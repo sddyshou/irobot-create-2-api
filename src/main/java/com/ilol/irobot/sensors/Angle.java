@@ -1,11 +1,11 @@
 package com.ilol.irobot.sensors;
 
 public class Angle extends SignedTwoBytes {
-  public Angle(String packetName, byte[] data) {
-    super(packetName, data);
-  }
+    public Angle(String packetName, byte[] data) {
+        super(packetName, data);
+    }
 
-  public short getAngle() {
-    return getValue();
-  }
+    public short getAngle() {
+        return getValue();
+    }
 }

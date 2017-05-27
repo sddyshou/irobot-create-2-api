@@ -2,11 +2,11 @@ package com.ilol.irobot.sensors;
 
 public class Voltage extends UnsignedTwoBytes {
 
-  public Voltage(String packetName, byte[] data) {
-    super(packetName, data);
-  }
+    public Voltage(String packetName, byte[] data) {
+        super(packetName, data);
+    }
 
-  public int getVoltage() {
-    return getValue();
-  }
+    public int getVoltage() {
+        return getValue();
+    }
 }

@@ -1,12 +1,12 @@
 package com.ilol.irobot;
 
-
 public interface Command {
-  byte[] getCommand();
+    byte[] getCommand();
 
-  boolean isExpectResponse();
+    boolean isExpectResponse();
 
-  int getLengthResponse();
+    int getLengthResponse();
 
-  <K extends SensorData> K getResponse(byte[] response);
+    <K extends SensorData> K getResponse(byte[] response);
+
 }
