@@ -13,7 +13,7 @@ public class MoveToCommand extends ChainedCommand {
         }
         List<Command> commands = new ArrayList<>(3);
         commands.add(DriveCommand.straight(velocity));
-        commands.add(new WaitTimeCommand(3));
+        commands.add(new WaitDistanceCommand(distance));
         commands.add(DriveCommand.stop());
         setCommands(commands);
     }

@@ -1,5 +1,8 @@
 package com.ilol.irobot.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.ilol.irobot.Command;
 
 public class TurnCommand extends ChainedCommand {
@@ -9,7 +12,10 @@ public class TurnCommand extends ChainedCommand {
 
     public TurnCommand(Short angle, Short velocity) {
         Command turn = angle > 0 ? DriveCommand.turnCCLW(velocity) : DriveCommand.turnCLW(velocity);
-        // TODO:
-//        setCommand(turn);
+        List<Command> commands = new ArrayList<>(3);
+        commands.add(turn);
+        commands.add(new WaitAngleCommand(angle));
+        commands.add(DriveCommand.stop());
+        setCommands(commands);
     }
 }
