@@ -4,8 +4,12 @@ import com.google.common.base.Optional;
 
 public enum ChargingState {
 
-    NOT_CHARGING(0, "Not Charging"), RECONDITIONING_CHARGING(1, "Reconditioning Charging"), FULL_CHARGING(2, "Full Charging"), TRICKLE_CHARGING(3,
-            "Trickle Charging"), WAITING(4, "Waiting"), CHARGING_FAULT_CONDITION(5, "Charging Fault Condition");
+    NOT_CHARGING(0, "Not Charging"),
+    RECONDITIONING_CHARGING(1, "Reconditioning Charging"),
+    FULL_CHARGING(2, "Full Charging"),
+    TRICKLE_CHARGING(3, "Trickle Charging"),
+    WAITING(4, "Waiting"),
+    CHARGING_FAULT_CONDITION(5, "Charging Fault Condition");
 
     public int code;
     public String stateName;

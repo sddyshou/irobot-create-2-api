@@ -47,7 +47,7 @@ public class CommandFactory {
         return new LowSideDriver(driver0, driver1, driver2);
     }
 
-    public static SingleCommand sensor(int packetId) {
+    public static SensorCommand sensor(int packetId) {
         return new SensorCommand(packetId);
     }
 }

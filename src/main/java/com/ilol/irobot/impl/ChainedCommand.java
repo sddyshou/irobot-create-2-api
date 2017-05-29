@@ -15,8 +15,8 @@ public class ChainedCommand implements Command {
     }
 
     @Override
-    public Optional<? extends SensorData> execute(CommandExecutor commandExecutor) {
-        Optional<? extends SensorData> response = Optional.absent();
+    public <K extends SensorData> Optional<K> execute(CommandExecutor commandExecutor) {
+        Optional<K> response = Optional.absent();
         for (Command command : commands) {
             response = command.execute(commandExecutor);
         }

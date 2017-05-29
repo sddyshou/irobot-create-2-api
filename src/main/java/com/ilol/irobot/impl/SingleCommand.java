@@ -12,10 +12,10 @@ public class SingleCommand implements Command {
     private byte[] command;
 
     @Override
-    public Optional<? extends SensorData> execute(CommandExecutor commandExecutor) {
+    public <K extends SensorData> Optional<K> execute(CommandExecutor commandExecutor) {
         while (true) {
             commandExecutor.send(getCommand());
-            Optional<? extends SensorData> response = getResponse(command);
+            Optional<K> response = getResponse(commandExecutor);
             boolean status = handleResponse(response);
             if (status) {
                 return response;
@@ -39,11 +39,7 @@ public class SingleCommand implements Command {
         return command;
     }
 
-    public int getLengthResponse() {
-        return 0;
-    }
-
-    public Optional<? extends SensorData> getResponse(byte[] response) {
+    public <K extends SensorData> Optional<K> getResponse(CommandExecutor commandExecutor) {
         return Optional.absent();
     }
 

@@ -3,6 +3,7 @@ package com.ilol.irobot.impl;
 import java.lang.reflect.Constructor;
 
 import com.google.common.base.Optional;
+import com.ilol.irobot.CommandExecutor;
 import com.ilol.irobot.SensorData;
 import com.ilol.irobot.enums.OpCode;
 import com.ilol.irobot.enums.SensorPacket;
@@ -20,17 +21,28 @@ public class SensorCommand extends SingleCommand {
         setCommand(new byte[] { (byte) OpCode.SENSOR.op(), packetId.byteValue() });
     }
 
-    public int getLengthResponse() {
+    private int getLengthResponse() {
         return sensorPacket.numBytesResponse;
     }
 
     @Override
-    public Optional<? extends SensorData> getResponse(byte[] response) {
+    public <K extends SensorData> Optional<K> getResponse(CommandExecutor commandExecutor) {
+        byte[] response = commandExecutor.recv(getLengthResponse());
+        if (response == null || response.length != getLengthResponse()) {
+            return Optional.absent();
+        }
+        return Optional.of(getResponse(response));
+    }
+
+    @SuppressWarnings("unchecked")
+    public <K extends SensorData> K getResponse(byte[] response) {
         try {
             Constructor<? extends SensorData> responseConstructor = sensorPacket.responseClassType.getConstructor(String.class, byte[].class);
-            return Optional.of(responseConstructor.newInstance(sensorPacket.packetName, response));
+            return (K) responseConstructor.newInstance(sensorPacket.packetName, response);
         } catch (Exception e) {
             throw new RuntimeException("This shouldn't have happened but if it did, contact me at emantos@gmail.com");
         }
     }
+
+
 }
