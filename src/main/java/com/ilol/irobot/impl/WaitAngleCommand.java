@@ -7,7 +7,7 @@ import com.ilol.irobot.enums.SensorPacket;
 import com.ilol.irobot.sensors.Angle;
 
 public class WaitAngleCommand extends SingleCommand {
-    private static final long WAIT_INTERVAL = 100;
+    private static final long WAIT_INTERVAL = 50;
     private short waitAngle;
 
     public WaitAngleCommand(short waitAngle) {
